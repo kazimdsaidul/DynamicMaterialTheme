@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme.Green" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/primary_green</item>
+        <item name="colorPrimaryDark">@color/primary_dark_green</item>
+        <item name="colorAccent">@color/accent_green</item>
+        <item name="colorControlHighlight">@color/primary_green</item>
+    </style>
+
+
+    <style name="AppTheme.Purple" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/primary_purple</item>
+        <item name="colorPrimaryDark">@color/primary_dark_purple</item>
+        <item name="colorAccent">@color/accent_purple</item>
+        <item name="colorControlHighlight">@color/primary_purple</item>
+    </style>
+
+</resources>

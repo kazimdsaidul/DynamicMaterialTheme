@@ -1,0 +1,47 @@
+<resources>
+
+    <!-- Base application themes. -->
+    <style name="ThemeApp.Green" parent="AppTheme.Base.Green"/>
+    <style name="ThemeApp.Purple" parent="AppTheme.Base.Purple"/>
+
+
+    <style name="AppTheme.Base.Green" parent="AppTheme.Green">
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@color/activity_bg</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:navigationBarColor">@color/primary_green</item>
+    </style>
+
+    <style name="AppTheme.Base.Purple" parent="AppTheme.Purple">
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@color/activity_bg</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:navigationBarColor">@color/primary_purple</item>
+    </style>
+
+
+
+
+
+
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@android:color/white</item>
+    </style>
+
+
+
+</resources>
+
+
+
+
+
