@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -49,22 +51,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initialize(this);
 
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
 
-            //set the transition
-            Transition ts = new Explode();
-            ts.setDuration(5000);
-            getWindow().setEnterTransition(ts);
-            getWindow().setExitTransition(ts);
-        }
 
         super.onCreate(savedInstanceState);
 
         setAppTheme();
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -80,13 +72,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
 
-
         layout_green = (LinearLayout) findViewById(R.id.Layout_green);
         layout_purple = (LinearLayout) findViewById(R.id.Layout_purple);
         imageView = (SimpleDraweeView) findViewById(R.id.imageView);
-
-
-
 
 
         layout_green.setOnClickListener(this);
@@ -132,8 +120,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
 
-
-
     }
 
 
@@ -143,9 +129,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (MainController.preferenceGetString(Theme_Current, "").equals("Green")) {
                 setTheme(R.style.ThemeApp_Green);
             } else if (MainController.preferenceGetString(Theme_Current, "").equals("Purple")) {
+
+
                 setTheme(R.style.ThemeApp_Purple);
+
+
             }
         } else {
+
+
             setTheme(R.style.ThemeApp_Green);
         }
     }
@@ -156,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.Layout_green:
 
 
-                    MainController.preferencePutString(Theme_Current, "Green");
+                MainController.preferencePutString(Theme_Current, "Green");
 
 
                 break;
@@ -164,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.Layout_purple:
 
 
-                    MainController.preferencePutString(Theme_Current, "Purple");
+                MainController.preferencePutString(Theme_Current, "Purple");
 
 
                 /*TaskStackBuilder.create(this)
@@ -199,42 +191,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
-                                                         int reqWidth, int reqHeight) {
 
-        // First decode with inJustDecodeBounds=true to check dimensions
-        final BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
-        BitmapFactory.decodeResource(res, resId, options);
 
-        // Calculate inSampleSize
-        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
-
-        // Decode bitmap with inSampleSize set
-        options.inJustDecodeBounds = false;
-        return BitmapFactory.decodeResource(res, resId, options);
-    }
-
-    public static int calculateInSampleSize(
-            BitmapFactory.Options options, int reqWidth, int reqHeight) {
-        // Raw height and width of image
-        final int height = options.outHeight;
-        final int width = options.outWidth;
-        int inSampleSize = 1;
-
-        if (height > reqHeight || width > reqWidth) {
-
-            final int halfHeight = height / 2;
-            final int halfWidth = width / 2;
-
-            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
-            // height and width larger than the requested height and width.
-            while ((halfHeight / inSampleSize) >= reqHeight
-                    && (halfWidth / inSampleSize) >= reqWidth) {
-                inSampleSize *= 2;
-            }
-        }
-
-        return inSampleSize;
-    }
 }
